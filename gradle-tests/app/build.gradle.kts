@@ -6,8 +6,8 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("org.openjfx.javafxplugin") version "0.0.8"
 }
 
 repositories {
@@ -16,6 +16,12 @@ repositories {
 }
 
 dependencies {
+    testImplementation("org.testfx:testfx-core:4.0.18")
+    testImplementation("org.testfx:testfx-junit5:4.0.18")
+    testImplementation("org.testfx:openjfx-monocle:21.0.2")
+    testImplementation("org.assertj:assertj-core:3.13.2")
+    testImplementation("org.hamcrest:hamcrest:2.1")
+
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
 
@@ -50,7 +56,18 @@ application {
     mainClass = "com.lab.App"
 }
 
+javafx {
+    version = "21"
+    modules("javafx.controls")
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    jvmArgs = listOf(
+        "-Djava.awt.headless=true",
+        "-Dtestfx.robot=glass",
+        "-Dtestfx.headless=true",
+        "-Dprism.order=sw"
+    )
 }
