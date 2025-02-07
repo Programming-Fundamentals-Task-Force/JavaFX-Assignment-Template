@@ -43,22 +43,22 @@ jobs:
         comparison-method: exact
         timeout: 10
         max-score: 20
-    - name: Unit test 1
+    - name: app_window_has_correct_size
       id: unit-test-1
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Unit test 1
+        test-name: app_window_has_correct_size
         setup-command: ''
-        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.testOutput -p gradle-tests"
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.app_window_has_correct_size -p gradle-tests"
         timeout: 10
         max-score: 40
-    - name: Unit test 2
+    - name: app_has_two_textfields
       id: unit-test-2
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Unit test 2
+        test-name: app_has_two_textfields
         setup-command: ''
-        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.testEquality -p gradle-tests"
+        command: "./gradle-tests/gradlew test --tests org.test.ClassTest.app_has_two_textfields -p gradle-tests"
         timeout: 10
         max-score: 40
     - name: Autograding Reporter
